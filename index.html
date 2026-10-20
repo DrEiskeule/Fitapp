@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080b09"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
+<title>FitPulse – Dein Fitness-Tracker</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div><div class="brand">FIT<span>PULSE</span></div><p>Dein Tag. Dein Tempo.</p></div><div class="avatar">✦</div></header>
+<main>
+<section id="home" class="page active">
+<div class="greeting"><div><small>DEIN ÜBERBLICK</small><h1>Hallo! 👋</h1><p class="muted">Jeder kleine Schritt zählt.</p></div><div class="date" id="today"></div></div>
+<div class="stats">
+<article class="stat orange"><div class="stat-icon">🔥</div><small>Kalorien gegessen</small><strong id="dashCalories">0</strong><span>kcal heute</span><div class="bar"><i id="calBar"></i></div></article>
+<article class="stat green"><div class="stat-icon">👟</div><small>Schritte</small><strong id="dashSteps">—</strong><span>Apple Health nicht verbunden</span><div class="bar"><i style="width:0%" id="stepBar"></i></div></article>
+<article class="stat blue"><div class="stat-icon">⚡</div><small>Aktive Kalorien</small><strong id="dashBurn">—</strong><span>Apple Health</span></article>
+<article class="stat purple"><div class="stat-icon">🏋️</div><small>Workouts</small><strong id="dashWorkouts">0</strong><span>protokolliert</span></article>
+</div>
+<div class="section-head"><h2>Dein Tagesziel</h2><span class="pill">HEUTE</span></div>
+<div class="panel goal"><div class="goal-row"><span>Kalorien</span><b id="goalText">0 / 2.300 kcal</b></div><div class="bar wide"><i id="goalBar"></i></div><div class="goal-row water-row"><span>💧 Wasser</span><b id="waterText">0 / 2.500 ml</b></div><div class="bar wide"><i id="waterBar"></i></div><button class="btn secondary full" id="addWater">+ 250 ml Wasser</button></div>
+<div class="section-head"><h2>Zuletzt erfasst</h2></div><div id="recent" class="stack"><div class="empty">Deine Mahlzeiten und Workouts erscheinen hier.</div></div>
+</section>
+<section id="food" class="page">
+<small class="eyebrow">ERNÄHRUNG</small><h1>Was hast du gegessen?</h1><p class="muted">Erfasse Mahlzeiten schnell und unkompliziert.</p>
+<div class="quick-actions"><button class="action" id="openBarcode"><span>▦</span><b>Barcode</b><small>Produkt scannen</small></button><button class="action" id="openPhoto"><span>📷</span><b>Kamera / Foto</b><small>Bild als Hilfe</small></button><button class="action" id="focusManual"><span>＋</span><b>Manuell</b><small>Werte eintragen</small></button></div>
+<div class="panel"><h2>Lebensmittel hinzufügen</h2><label>Lebensmittel<input id="foodName" placeholder="z. B. Haferflocken mit Banane"></label><div class="two"><label>Kalorien (kcal)<input id="foodKcal" type="number" min="0" placeholder="420"></label><label>Menge<input id="foodAmount" placeholder="1 Portion"></label></div><button class="btn full" id="saveFood">+ Mahlzeit hinzufügen</button><p class="hint" id="foodMsg">Barcode-Daten sind Richtwerte. Prüfe Portion und Nährwerte.</p></div>
+<div class="section-head"><h2>Deine Einträge</h2><span class="pill" id="foodTotal">0 kcal</span></div><div id="foodList" class="stack"></div>
+</section>
+<section id="training" class="page">
+<small class="eyebrow">BEWEGUNG</small><h1>Training</h1><p class="muted">Halte deine Workouts und Übungen fest.</p>
+<div class="panel"><h2>Workout protokollieren</h2><label>Workoutname<input id="workName" value="Ganzkörpertraining"></label><div class="two"><label>Dauer (Min.)<input id="workMinutes" type="number" value="30" min="0"></label><label>Kalorien (kcal)<input id="workKcal" type="number" value="200" min="0"></label></div><button class="btn full" id="saveWorkout">Workout speichern</button></div>
+<div class="section-head"><h2>Schnellstart</h2></div><div class="plans"><button data-plan="Ganzkörpertraining" data-min="45" data-kcal="250">🏋️ <span><b>Ganzkörper</b><small>45 min · Kraft</small></span><i>›</i></button><button data-plan="Laufen" data-min="30" data-kcal="300">🏃 <span><b>Laufen</b><small>30 min · Cardio</small></span><i>›</i></button><button data-plan="Radfahren" data-min="40" data-kcal="260">🚴 <span><b>Radfahren</b><small>40 min · Ausdauer</small></span><i>›</i></button><button data-plan="Dehnen" data-min="15" data-kcal="50">🧘 <span><b>Dehnen</b><small>15 min · Erholung</small></span><i>›</i></button></div>
+<div class="panel"><h2>Übung protokollieren</h2><label>Übung<input id="exerciseName" value="Kniebeugen"></label><div class="two"><label>Sätze<input id="exerciseSets" type="number" value="3"></label><label>Wiederholungen<input id="exerciseReps" type="number" value="12"></label></div><button class="btn full" id="saveExercise">Übung hinzufügen</button><div id="exerciseList" class="stack compact"></div></div>
+<div class="section-head"><h2>Workouts</h2></div><div id="workList" class="stack"></div>
+</section>
+<section id="health" class="page">
+<small class="eyebrow">VERBINDUNGEN</small><h1>Apple Health</h1><div class="health-hero"><div class="heart">♥</div><div><h2>Deine Daten. Dein Überblick.</h2><p class="muted">Schritte und aktive Kalorien automatisch einsehen – soweit verfügbar.</p></div></div>
+<div class="panel"><div class="connect-row"><div><b>Apple Health</b><p class="muted">Direkte HealthKit-Verbindung</p></div><span class="status">Nicht verfügbar im Browser</span></div><p class="hint">iOS erlaubt Webseiten keinen direkten Zugriff auf Apple Health / HealthKit. Dafür wäre eine native iPhone-App oder eine separate Brücke nötig.</p></div>
+<div class="panel"><h2>Schritte manuell eintragen</h2><label>Schritte heute<input id="manualSteps" type="number" placeholder="z. B. 7842"></label><label>Aktive Kalorien (kcal)<input id="manualBurn" type="number" placeholder="z. B. 320"></label><button class="btn full" id="saveHealth">Werte speichern</button><p class="hint">Manuelle Werte werden lokal auf diesem Gerät gespeichert.</p></div>
+<div class="panel"><h2>Deine Daten</h2><p class="muted">FitPulse Web speichert deine Eingaben in diesem Browser. Wenn du Browserdaten löschst oder ein anderes Gerät verwendest, sind die Einträge nicht automatisch synchronisiert.</p></div>
+</section>
+</main>
+<nav class="nav"><button class="navitem active" data-tab="home"><span>⌂</span>Heute</button><button class="navitem" data-tab="food"><span>◉</span>Ernährung</button><button class="navitem" data-tab="training"><span>♧</span>Training</button><button class="navitem" data-tab="health"><span>♡</span>Health</button></nav>
+<div id="modal" class="modal hidden"><div class="modal-card"><button class="close" id="closeModal">×</button><h2 id="modalTitle">Barcode scannen</h2><p class="muted" id="modalText">Gib den Barcode ein. Die Suche nutzt Open Food Facts.</p><div id="scannerArea"></div><label>Barcode<input id="barcodeInput" inputmode="numeric" placeholder="EAN / UPC"></label><button class="btn full" id="lookupBarcode">Produkt suchen</button><p class="hint" id="scanMsg"></p></div></div>
+<div id="photoModal" class="modal hidden"><div class="modal-card"><button class="close" id="closePhoto">×</button><h2>Lebensmittel-Foto</h2><p class="muted">Foto als Gedächtnisstütze nutzen. Eine zuverlässige Kalorienbestimmung aus einem Bild ist in dieser Web-Version nicht enthalten.</p><input id="photoInput" type="file" accept="image/*" capture="environment"><img id="photoPreview" class="photo-preview hidden"><button class="btn full" id="usePhoto">Foto auswählen</button></div></div>
+<script src="app.js"></script>
+</body></html>
